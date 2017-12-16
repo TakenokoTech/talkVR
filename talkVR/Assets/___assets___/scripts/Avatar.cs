@@ -6,6 +6,7 @@ using UnityEngine.XR;
 public class Avatar : MonoBehaviour {
 
     public GameObject headCamera;
+    public GameObject avatarTruthHead;
     public GameObject avatarHead;
     public GameObject avatarRightHand;
     public GameObject avatarLeftHand;
@@ -44,13 +45,12 @@ public class Avatar : MonoBehaviour {
         pos2.z += 0.2F;
         avatarLeftHand.transform.position = pos2;
 
-        // 顔の角度
-        avatarHead.transform.rotation = trackingRot;
-        debugBlock1.transform.rotation = trackingRot;
-
         // 顔の位置
-        Vector3 basePos = avatarHead.transform.position;
+        Vector3 basePos = avatarTruthHead.transform.position;
         Vector3 accuracyPos = new Vector3(0, -0.1F, 0.1F);
         headCamera.transform.position = basePos + accuracyPos;
+
+        // 顔の角度
+        avatarHead.transform.rotation = trackingRot;
     }
 }
