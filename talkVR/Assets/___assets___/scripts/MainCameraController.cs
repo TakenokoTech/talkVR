@@ -12,7 +12,8 @@ public class MainCameraController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Vector3 basePos = Vector3.zero;
+        // Vector3 basePos = Vector3.zero;
+        Vector3 basePos = new Vector3(0, 0F, 0.1F);
         Vector3 trackingPos = InputTracking.GetLocalPosition(XRNode.CenterEye);
         transform.position = basePos - trackingPos;
     }
