@@ -17,8 +17,8 @@ public class Avatar : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
-	}
+        //UnityEngine.XR.XRSettings.showDeviceView = false;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -30,20 +30,24 @@ public class Avatar : MonoBehaviour {
 
         // Oculus角度取得
         Quaternion trackingRot = InputTracking.GetLocalRotation(XRNode.CenterEye);
+        Quaternion trackingRightRot = InputTracking.GetLocalRotation(XRNode.RightHand);
+        Quaternion trackingLeftRot = InputTracking.GetLocalRotation(XRNode.LeftHand);
+
 
         // 手の位置
-        // Vector3 pos1 = OculusRightHand.transform.position - headCamera.transform.position;
         Vector3 pos1 = trackingRightPos - trackingPos;
         pos1.y += 1.4F;
         pos1.z += 0.2F;
         avatarRightHand.transform.position = pos1;
+        //avatarRightHand.transform.rotation = trackingRightRot;
+
 
         // 手の位置
-        // Vector3 pos2 = OculusLeftHand.transform.position - headCamera.transform.position;
         Vector3 pos2 = trackingLeftPos - trackingPos;
         pos2.y += 1.4F;
         pos2.z += 0.2F;
         avatarLeftHand.transform.position = pos2;
+        //avatarLeftHand.transform.rotation = trackingLeftRot;
 
         // 顔の位置
         Vector3 basePos = avatarTruthHead.transform.position;

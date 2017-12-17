@@ -17,7 +17,6 @@ public class HoldingScript : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        //holdPosition = transform.GetChild(0).gameObject;
     }
 	
 	// Update is called once per frame
@@ -51,9 +50,6 @@ public class HoldingScript : MonoBehaviour {
             Debug.Log("左手Hold " + haveItemInLeftHand);
             HandScript.Hold(ref haveItemInLeftHand, ref colliderToLeftHand, ref debugBlock1);
         }
-
-        //Debug.Log(colliderToRightHand.GetColliderObj() + ", " + colliderToLeftHand.GetColliderObj() + " = " +
-        //    haveItemInRightHand + ", " + haveItemInLeftHand + " "+ rTrigger1 + ", " + lTrigger1);
     }
 }
 
@@ -66,7 +62,6 @@ public class HandScript {
         Vector3 vec = obj.GetPosition();
         obj.GetColliderObj().transform.position = vec;
         debugObj1.transform.position = vec;
-        // haveItem.transform.parent = obj.transform;
         Rigidbody rb = haveItem.GetComponent<Rigidbody>();
         rb.isKinematic = true;
         rb.useGravity = false;
@@ -75,8 +70,6 @@ public class HandScript {
     public static void Release(ref Transform haveItem, ref ColliderScript obj)
     {
 
-        // haveItem.parent = null;
-        // rb.velocity = OVRInput.GetLocalControllerVelocity(whichController);
         Rigidbody rb = haveItem.GetComponent<Rigidbody>();
         rb.isKinematic = false;
         rb.useGravity = true;
