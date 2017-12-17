@@ -5,12 +5,14 @@ using UnityEngine.XR;
 
 public class HoldingScript : MonoBehaviour {
 
-    public Transform haveItemInLeftHand;
-    public Transform haveItemInRightHand;
     public ColliderScript colliderToLeftHand;
     public ColliderScript colliderToRightHand;
 
-    private GameObject holdPosition;
+    public GameObject debugBlock1;
+    public GameObject debugBlock2;
+
+    private Transform haveItemInLeftHand = null;
+    private Transform haveItemInRightHand = null;
 
     // Use this for initialization
     void Start ()
@@ -24,53 +26,59 @@ public class HoldingScript : MonoBehaviour {
         // 人差し指・中指トリガー
         float rTrigger1 = OVRInput.Get(OVRInput.RawAxis1D.RIndexTrigger);
         float rTrigger2 = OVRInput.Get(OVRInput.RawAxis1D.RHandTrigger);
-        if (haveItemInRightHand != null && rTrigger1 < 80)
+        if (haveItemInRightHand != null && rTrigger1 < 0.8)
         {
-            Debug.Log("右手Release");
-            HandScript.Release(haveItemInRightHand, colliderToRightHand);
+            Debug.Log("右手Release " + haveItemInRightHand);
+            HandScript.Release(ref haveItemInRightHand, ref colliderToRightHand);
         }
-        else if ((haveItemInRightHand == null) && (colliderToRightHand.GetColliderObj() != null) && rTrigger1 >= 80)
+        else if ((colliderToRightHand.GetColliderObj() != null) && rTrigger1 >= 0.8)
         {
-            Debug.Log("右手Hold");
-            HandScript.Hold(haveItemInRightHand, colliderToRightHand);
+            Debug.Log("右手Hold " + haveItemInRightHand);
+            HandScript.Hold(ref haveItemInRightHand, ref colliderToRightHand, ref debugBlock1);
         }
 
         // 人差し指・中指トリガー
         float lTrigger1 = OVRInput.Get(OVRInput.RawAxis1D.LIndexTrigger);
         float lTrigger2 = OVRInput.Get(OVRInput.RawAxis1D.LHandTrigger);
-        if (haveItemInLeftHand != null && lTrigger1 < 80)
+        debugBlock2.transform.position = colliderToLeftHand.GetPosition();
+        if (haveItemInLeftHand != null && lTrigger1 < 0.8)
         {
-            Debug.Log("左手Release");
-            HandScript.Release(haveItemInLeftHand, colliderToLeftHand);
+            Debug.Log("左手Release " + haveItemInLeftHand);
+            HandScript.Release(ref haveItemInLeftHand, ref colliderToLeftHand);
         }
-        else if ((haveItemInRightHand == null) && (colliderToLeftHand.GetColliderObj() != null) && lTrigger1 >= 80)
+        else if ((colliderToLeftHand.GetColliderObj() != null) && lTrigger1 >= 0.8)
         {
-            Debug.Log("左手Hold");
-            HandScript.Hold(haveItemInLeftHand, colliderToLeftHand);
+            Debug.Log("左手Hold " + haveItemInLeftHand);
+            HandScript.Hold(ref haveItemInLeftHand, ref colliderToLeftHand, ref debugBlock1);
         }
 
-        Debug.Log(colliderToRightHand.GetColliderObj() + ", " + colliderToLeftHand.GetColliderObj());
+        //Debug.Log(colliderToRightHand.GetColliderObj() + ", " + colliderToLeftHand.GetColliderObj() + " = " +
+        //    haveItemInRightHand + ", " + haveItemInLeftHand + " "+ rTrigger1 + ", " + lTrigger1);
     }
 }
 
 public class HandScript {
 
-    public static void Hold(Transform haveItem, ColliderScript obj)
+    public static void Hold(ref Transform haveItem, ref ColliderScript obj, ref GameObject debugObj1)
     {
-        Rigidbody rb = obj.GetColliderObj().GetComponent<Rigidbody>();
+        
         haveItem = obj.GetColliderObj().transform;
-        obj.GetColliderObj().transform.position = obj.transform.position;
+        Vector3 vec = obj.GetPosition();
+        obj.GetColliderObj().transform.position = vec;
+        debugObj1.transform.position = vec;
         // haveItem.transform.parent = obj.transform;
-        // rb.isKinematic = true;
+        Rigidbody rb = haveItem.GetComponent<Rigidbody>();
+        rb.isKinematic = true;
         rb.useGravity = false;
     }
 
-    public static void Release(Transform haveItem, ColliderScript obj)
+    public static void Release(ref Transform haveItem, ref ColliderScript obj)
     {
-        Rigidbody rb = haveItem.GetComponent<Rigidbody>();
+
         // haveItem.parent = null;
         // rb.velocity = OVRInput.GetLocalControllerVelocity(whichController);
-        // rb.isKinematic = false;
+        Rigidbody rb = haveItem.GetComponent<Rigidbody>();
+        rb.isKinematic = false;
         rb.useGravity = true;
         haveItem = null;
     }

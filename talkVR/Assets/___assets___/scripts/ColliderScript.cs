@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class ColliderScript : MonoBehaviour
 {
-    List<GameObject> colList = new List<GameObject>();
+
+    public Vector3 acc;
+    private List<GameObject> colList = new List<GameObject>();
 
     void OnTriggerEnter(Collider other)
     {
@@ -17,7 +19,9 @@ public class ColliderScript : MonoBehaviour
     void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("holdable") && colList.Contains(other.gameObject))
+        {
             colList.Remove(other.gameObject);
+        }
     }
 
     public GameObject GetColliderObj()
@@ -34,6 +38,6 @@ public class ColliderScript : MonoBehaviour
 
     public Vector3 GetPosition()
     {
-        return transform.position;
+        return transform.position + acc;
     }
 }
