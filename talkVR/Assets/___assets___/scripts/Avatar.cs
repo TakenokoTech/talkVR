@@ -33,14 +33,12 @@ public class Avatar : MonoBehaviour {
         Quaternion trackingRightRot = InputTracking.GetLocalRotation(XRNode.RightHand);
         Quaternion trackingLeftRot = InputTracking.GetLocalRotation(XRNode.LeftHand);
 
-
         // 手の位置
         Vector3 pos1 = trackingRightPos - trackingPos;
         pos1.y += 1.4F;
         pos1.z += 0.2F;
         avatarRightHand.transform.position = pos1;
         //avatarRightHand.transform.rotation = trackingRightRot;
-
 
         // 手の位置
         Vector3 pos2 = trackingLeftPos - trackingPos;
