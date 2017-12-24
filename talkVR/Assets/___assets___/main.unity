@@ -392,7 +392,7 @@ AudioListener:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 154960490}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!124 &154960493
 Behaviour:
   m_ObjectHideFlags: 0
@@ -588,7 +588,7 @@ AudioListener:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 218571726}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!124 &218571729
 Behaviour:
   m_ObjectHideFlags: 0
@@ -5916,7 +5916,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 0}
   provider: 0
-  gain: 10
+  gain: 50
   audioMute: 1
   loopback: 108
   debugVisemes: 100
@@ -6463,6 +6463,11 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9e8bb4bd05eb4344b91e0ecfa8a89378, type: 2}
+    - target: {fileID: 81661125594202038, guid: 11dd1e788473e2840a35d47c3d84796b,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 11dd1e788473e2840a35d47c3d84796b, type: 2}
   m_IsPrefabParent: 0
@@ -6998,6 +7003,11 @@ Prefab:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 81661125594202038, guid: 11dd1e788473e2840a35d47c3d84796b,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 11dd1e788473e2840a35d47c3d84796b, type: 2}
   m_IsPrefabParent: 0
@@ -7277,6 +7287,16 @@ Prefab:
       propertyPath: debugBlock2
       value: 
       objectReference: {fileID: 446781235}
+    - target: {fileID: 81979545451871190, guid: dccbf2de958ed4745b4d4581077ed565,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 124744949208419258, guid: dccbf2de958ed4745b4d4581077ed565,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dccbf2de958ed4745b4d4581077ed565, type: 2}
   m_IsPrefabParent: 0
@@ -8009,7 +8029,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: 49f2055d53eeb4e5a92af590a44bddee, type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 13700030, guid: 49f2055d53eeb4e5a92af590a44bddee, type: 2}
       propertyPath: m_BlendShapeWeights.Array.data[1]
@@ -8047,6 +8067,10 @@ Prefab:
       propertyPath: animations.Array.data[3]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 49f2055d53eeb4e5a92af590a44bddee, type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 3173dc991e314594abd6180b45c49c92, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 49f2055d53eeb4e5a92af590a44bddee, type: 2}
   m_IsPrefabParent: 0
@@ -9849,6 +9873,11 @@ Prefab:
       propertyPath: m_TargetDisplay
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 81661125594202038, guid: 11dd1e788473e2840a35d47c3d84796b,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 11dd1e788473e2840a35d47c3d84796b, type: 2}
   m_IsPrefabParent: 0
@@ -9909,6 +9938,16 @@ Prefab:
         type: 2}
       propertyPath: m_AnchoredPosition.x
       value: -2.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 81661125594202038, guid: 11dd1e788473e2840a35d47c3d84796b,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 124084082217888802, guid: 11dd1e788473e2840a35d47c3d84796b,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 11dd1e788473e2840a35d47c3d84796b, type: 2}
