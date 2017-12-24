@@ -13,7 +13,6 @@ public class Avatar : MonoBehaviour {
 
     public GameObject debugBlock1;
     public GameObject debugBlock2;
-    public GameObject debugBlock3;
 
     // Use this for initialization
     void Start () {

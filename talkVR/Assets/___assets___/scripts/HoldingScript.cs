@@ -14,6 +14,9 @@ public class HoldingScript : MonoBehaviour {
     private Transform haveItemInLeftHand = null;
     private Transform haveItemInRightHand = null;
 
+    private string holdingRightHandStr = null;
+    private string holdingLeftHandStr = null;
+
     // Use this for initialization
     void Start ()
     {
@@ -29,27 +32,35 @@ public class HoldingScript : MonoBehaviour {
         {
             Debug.Log("右手Release " + haveItemInRightHand);
             HandScript.Release(ref haveItemInRightHand, ref colliderToRightHand);
+            holdingRightHandStr = null;
         }
         else if ((colliderToRightHand.GetColliderObj() != null) && rTrigger1 >= 0.8)
         {
             Debug.Log("右手Hold " + haveItemInRightHand);
             HandScript.Hold(ref haveItemInRightHand, ref colliderToRightHand, ref debugBlock1);
+            holdingRightHandStr = haveItemInRightHand.name;
         }
 
         // 人差し指・中指トリガー
         float lTrigger1 = OVRInput.Get(OVRInput.RawAxis1D.LIndexTrigger);
         float lTrigger2 = OVRInput.Get(OVRInput.RawAxis1D.LHandTrigger);
-        debugBlock2.transform.position = colliderToLeftHand.GetPosition();
         if (haveItemInLeftHand != null && lTrigger1 < 0.8)
         {
             Debug.Log("左手Release " + haveItemInLeftHand);
             HandScript.Release(ref haveItemInLeftHand, ref colliderToLeftHand);
+            holdingLeftHandStr = null;
         }
         else if ((colliderToLeftHand.GetColliderObj() != null) && lTrigger1 >= 0.8)
         {
             Debug.Log("左手Hold " + haveItemInLeftHand);
             HandScript.Hold(ref haveItemInLeftHand, ref colliderToLeftHand, ref debugBlock1);
+            holdingLeftHandStr  = haveItemInLeftHand.name;
         }
+    }
+
+    public string[] GetHoldingObj() {
+        string[] r = {holdingRightHandStr, holdingLeftHandStr};
+        return r;
     }
 }
 
@@ -69,7 +80,6 @@ public class HandScript {
 
     public static void Release(ref Transform haveItem, ref ColliderScript obj)
     {
-
         Rigidbody rb = haveItem.GetComponent<Rigidbody>();
         rb.isKinematic = false;
         rb.useGravity = true;
